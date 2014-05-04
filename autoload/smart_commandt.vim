@@ -20,9 +20,9 @@ function! smart_commandt#invoke(...)
     exec 'CommandTFlush'
   endif
 
-  if exists("a:1")
+  if a:0 == 1
     exec 'CommandT ./' . a:1
   else
-    exec 'CommandT ./'
+    exec 'CommandT'
   endif
 endfunction
