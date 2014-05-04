@@ -12,7 +12,7 @@ function! s:in_git_repo()
 endfunction
 
 function! s:cache_should_be_flushed()
-  return s:in_git_repo() || s:in_git_repo() && s:has_untracked_files()
+  return !s:in_git_repo() || s:in_git_repo() && s:has_untracked_files()
 endfunction
 
 function! smart_commandt#invoke(...)
