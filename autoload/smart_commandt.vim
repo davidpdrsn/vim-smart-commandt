@@ -11,8 +11,12 @@ function! s:in_git_repo()
   return filereadable("./.git/HEAD")
 endfunction
 
+function! s:cache_should_be_flushed()
+  return s:in_git_repo() || s:in_git_repo() && s:has_untracked_files()
+endfunction
+
 function! smart_commandt#invoke(...)
-  if s:in_git_repo() && s:has_untracked_files()
+  if s:cache_should_be_flushed()
     exec 'CommandTFlush'
   endif
 
