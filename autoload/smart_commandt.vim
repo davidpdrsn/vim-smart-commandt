@@ -1,3 +1,8 @@
+if !exists(":CommandT")
+  echoerr "Smart CommandT requires CommandT to be installed"
+  finish
+end
+
 function! s:has_untracked_files()
   return str2nr(system("git ls-files --exclude-standard --others | wc -l")) > 0
 endfunction
